@@ -2,7 +2,7 @@ import { redirect, fail } from "@sveltejs/kit";
 import type { Actions } from "./$types";
 
 export const actions = {
-  login: async ({ request, locals }) => {
+  default: async ({ request, locals }) => {
     const form_data = await request.formData();
     const email = form_data.get("email");
     const password = form_data.get("password");
@@ -20,8 +20,5 @@ export const actions = {
     } else {
       redirect(303, "/app");
     }
-  },
-  register: async (event) => {
-    // TODO register the user
   },
 } satisfies Actions;
